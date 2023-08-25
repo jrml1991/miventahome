@@ -1,0 +1,21 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.airfore.cell_info" >
+4
+5    <uses-sdk
+6        android:minSdkVersion="16"
+6-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml
+7        android:targetSdkVersion="16" />
+7-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml
+8
+9    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+9-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:4:5-81
+9-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:4:22-78
+10    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+10-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:5:5-79
+10-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:5:22-76
+11    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+11-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:6:5-75
+11-->C:\Users\josue.marquez\AppData\Local\Pub\Cache\hosted\pub.dev\cell_info-0.2.9\android\src\main\AndroidManifest.xml:6:22-72
+12
+13</manifest>
