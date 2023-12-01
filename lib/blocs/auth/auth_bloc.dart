@@ -92,11 +92,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       intentos: 0,
       checkLoginFinish: false,
     ));
-    final _authService = AuthService();
-    final _usuarioService = UsuarioService();
+    final authService = AuthService();
+    final usuarioService = UsuarioService();
 
-    String expTS = await _authService.getTokenExp();
-    String token = await _authService.getToken();
+    String expTS = await authService.getTokenExp();
+    String token = await authService.getToken();
 
     final fechaExp =
         DateTime.fromMillisecondsSinceEpoch(int.parse(expTS) * 1000);
@@ -104,7 +104,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     final fechaActual = DateTime.now();
 
     if (fechaActual.compareTo(fechaExp) <= 0) {
-      final usuario = await _usuarioService.getInfoUsuario();
+      final usuario = await usuarioService.getInfoUsuario();
       emit(state.copyWith(
         autenticado: true,
         fallido: false,

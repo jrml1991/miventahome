@@ -75,9 +75,7 @@ class _TabPageState extends State<TabPage> with TickerProviderStateMixin {
                     ReportePage(
                       animationController: animationController,
                     ),
-                    ReportePage(
-                      animationController: animationController,
-                    ),
+                    const MiPerfilPage(),
                   ],
                 ),
               ),

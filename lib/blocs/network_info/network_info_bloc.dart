@@ -15,7 +15,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:miventahome/global/environment.dart';
 import 'package:miventahome/models/models.dart';
-import 'package:miventahome/services/db_service.dart';
+import 'package:miventahome/services/services.dart';
 import 'package:reactive_forms/reactive_forms.dart';
 import 'package:reactive_image_picker/image_file.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -209,9 +209,11 @@ class NetworkInfoBloc extends Bloc<NetworkInfoEvent, NetworkInfoState> {
   }
 
   Future<String> _getPhoneNumber() async {
-    final prefs = await SharedPreferences.getInstance();
+    final _user = UsuarioService();
 
-    final String? telefono = prefs.getString('telefono');
+    final usuario = await _user.getInfoUsuario();
+    final telefono = usuario.telefono;
+    print(telefono);
     if (telefono == null || telefono == '') {
       return "";
     } else {
@@ -404,7 +406,7 @@ class NetworkInfoBloc extends Bloc<NetworkInfoEvent, NetworkInfoState> {
 
           final resp = await http
               .post(
-                Uri.parse('${Environment.apiURL}/guardar'),
+                Uri.parse('${Environment.apiURL}/misenal/guardar'),
                 body: jsonEncode(data),
                 headers: {'Content-Type': 'application/json'},
                 encoding: Encoding.getByName('utf-8'),
@@ -414,9 +416,11 @@ class NetworkInfoBloc extends Bloc<NetworkInfoEvent, NetworkInfoState> {
           if (resp.statusCode == 200) {
             await db.updateInformacion(info.copyWith(enviado: 'SI'));
           }
-        } on TimeoutException catch (_) {
+        } on TimeoutException catch (e) {
+          print(e.toString());
           return;
         } catch (e) {
+          print(e.toString());
           return;
         }
       }
@@ -541,7 +545,7 @@ class NetworkInfoBloc extends Bloc<NetworkInfoEvent, NetworkInfoState> {
 
           final resp = await http
               .post(
-                Uri.parse('${Environment.apiURL}/ejecucion_manual'),
+                Uri.parse('${Environment.apiURL}/misenal/ejecucion_manual'),
                 body: jsonEncode(data),
                 headers: {'Content-Type': 'application/json'},
                 encoding: Encoding.getByName('utf-8'),

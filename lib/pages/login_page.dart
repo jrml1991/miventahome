@@ -23,6 +23,9 @@ class LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
     authBloc = BlocProvider.of<AuthBloc>(context);
+    authBloc.add(const OnCheckLoginEvent(
+      checkLoginFinish: false,
+    ));
   }
 
   void validarLogin() {
@@ -58,8 +61,39 @@ class LoginPageState extends State<LoginPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const Logo(
+                    /*const Logo(
                       titulo: 'Sales Operations',
+                    ),*/
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Image(
+                          image: AssetImage('assets/logo.png'),
+                          height: 100,
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            Text(
+                              'Mi Venta',
+                              style: TextStyle(
+                                fontFamily: 'CronosLPro',
+                                fontSize: 18,
+                                color: kSecondaryColor,
+                              ),
+                            ),
+                            Text(
+                              'Home',
+                              style: TextStyle(
+                                fontFamily: 'CronosSPro',
+                                fontSize: 32,
+                                color: kPrimaryColor,
+                              ),
+                            ),
+                          ],
+                        )
+                      ],
                     ),
                     Container(
                       padding: const EdgeInsets.symmetric(horizontal: 50),

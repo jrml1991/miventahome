@@ -15,6 +15,7 @@ class LoadingPage extends StatelessWidget {
           if (!state.isAllGranted) {
             return const GpsAccessPage();
           }
+
           return const LoginPage();
         },
       ),

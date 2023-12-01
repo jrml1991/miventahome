@@ -19,7 +19,7 @@ class LocalDatabase {
 
     try {
       var databasePath = await getDatabasesPath();
-      String _path = p.join(databasePath, 'signal_database.db');
+      String _path = p.join(databasePath, 'miventa_home_database.db');
       _db = await openDatabase(_path,
           version: _version, onCreate: onCreate, onUpgrade: onUpgrade);
     } catch (ex) {
@@ -107,6 +107,25 @@ class LocalDatabase {
                                     )
             """;
 
+    await db.execute(sql);
+
+    //creando tabla de usuarios
+    sql = """
+              CREATE TABLE usuario (
+                                    id $idType,
+                                    flag $stringType,
+                                    iddms $stringType,
+                                    usuario $stringType,
+                                    nombre $stringType,
+                                    identidad $stringType,
+                                    territorio $stringType,
+                                    perfil $integerType,
+                                    telefono $stringType,
+                                    correo $stringType,
+                                    resultado $stringType,
+                                    foto $textType
+                                    )
+            """;
     await db.execute(sql);
   }
 
